@@ -19,6 +19,12 @@ parser.add_argument(
     help="Path to either the folder containing images or the image itself",
 )
 parser.add_argument(
+    "--write_path",
+    type=str,
+    default="",
+    help="Path to either the folder containing images or the image itself",
+)
+parser.add_argument(
     "--mask_type",
     type=str,
     default="surgical",
@@ -122,7 +128,8 @@ if is_directory:
     for f in tqdm(files):
         image_path = path + "/" + f
 
-        write_path = path + "_masked"
+        # write_path = path + "_masked"
+        write_path = args.write_path
         if not os.path.isdir(write_path):
             os.makedirs(write_path)
 
